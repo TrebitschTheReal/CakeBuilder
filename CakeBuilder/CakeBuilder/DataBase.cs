@@ -28,5 +28,16 @@ namespace CakeBuilder
                 materials.Add(new Ingridient(import.MaterialName[i], import.MaterialUnitType[i], import.MaterialUnitPrice[i], import.MaterialUnitQuantity[i]));
             }
         }
+        public int GetTheMaterialIndexByName(string ingridientName)
+        {
+            for (int i = 0; i < materials.Count; i++)
+            {
+                if(materials[i].Name == ingridientName)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
     }
 }

@@ -84,11 +84,13 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -108,7 +110,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock Text="Érték"
+            <TextBlock Text="Érték hozzáadása"
                        FontSize="45"
                        FontWeight="Bold"
                        FontFamily="Freestyle Script"
@@ -116,23 +118,54 @@
                        Grid.Column="1"
                        Grid.Row="3"/>
             <TextBox Background="LightPink"
+                     x:Name="textbox_Value"
                      Margin="20,20"
                      Grid.Column="2"
                      Grid.Row="3"
                      Width="60"
+                     Height="50"
                      FontSize="30"
                      Padding="3"/>
-            <Button x:Name="button_SaveAndExit"
-                    Click="Button_Click_SaveAndExit"
-                    Margin="0,250,0,0"
-                    Grid.Column="4"
-                    Grid.Row="4"
-                    Content="Save and Exit"
+            <Button x:Name="button_AddIngridientValue"
+                    Click="Button_Click_AddIngridientValue"
+                    Grid.Column="3"
+                    Grid.Row="3"
+                    Content="MEHET!"
                     FontWeight="Black"
                     FontFamily="Freestyle Script"
                     FontSize="40"
                     BorderThickness="0"
                     Background="Transparent" Style="{DynamicResource SaveAndExitButton}"/>
+            <Button x:Name="button_SaveAndExit"
+                    Click="Button_Click_SaveAndExit"
+                    Margin="0,260,0,0"
+                    Grid.Column="2"
+                    Grid.Row="4"
+                    Grid.ColumnSpan="4"
+                    Grid.RowSpan="4"
+                    Content="Mentés és kilépés"
+                    FontWeight="Black"
+                    FontFamily="Freestyle Script"
+                    FontSize="40"
+                    BorderThickness="0"
+                    Background="Transparent" Style="{DynamicResource SaveAndExitButton}"/>
+            <TextBlock Text="Torta neve: "
+                       FontSize="45"
+                       FontWeight="Bold"
+                       FontFamily="Freestyle Script"
+                       Margin="0,20"
+                       Grid.Column="1"
+                       Grid.Row="4"/>
+            <TextBox Background="LightPink"
+                     x:Name="textbox_CakeName"
+                     Margin="0,20"
+                     Grid.Column="2"
+                     Grid.Row="4"
+                     Grid.ColumnSpan="4"
+                     Width="230"
+                     Height="50"
+                     FontSize="30"
+                     Padding="3"/>
         </Grid>
     </Border>
 </Window>

@@ -20,10 +20,11 @@ namespace CakeBuilder
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DataBase data = new DataBase();
+
         public MainWindow()
         {
             InitializeComponent();
-            DataBase data = new DataBase();
             comboBox_ingridients.ItemsSource = data.Materials;
         }
 
@@ -36,11 +37,32 @@ namespace CakeBuilder
 
         private void Button_Click_SaveAndExit(object sender, RoutedEventArgs e)
         {
+            int chosenIngridient = comboBox_ingridients.SelectedIndex;
+            int typedValue = int.Parse(textbox_Value.Text);
 
-            if (MessageBox.Show("Your cake have been saved!", "", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
+            data.Materials[chosenIngridient].UnitQuantity = typedValue;
+
+            comboBox_ingridients.Text = "";
+            textbox_Value.Text = "";
+
+            string cakeName = textbox_CakeName.Text;
+            Export.SaveTheCake(data, cakeName);
+
+            if (MessageBox.Show("A torta recept elmentve!", "", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
             {
                 Environment.Exit(0);
             }
+        }
+
+        private void Button_Click_AddIngridientValue(object sender, RoutedEventArgs e)
+        {
+            int chosenIngridient = comboBox_ingridients.SelectedIndex;
+            int typedValue = int.Parse(textbox_Value.Text);
+
+            data.Materials[chosenIngridient].UnitQuantity = typedValue;
+
+            comboBox_ingridients.Text = "";
+            textbox_Value.Text = "";
         }
     }
 }

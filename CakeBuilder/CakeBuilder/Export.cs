@@ -28,9 +28,8 @@ namespace CakeBuilder
             sw.Close();
         }
 
-        public static void SaveTheCake(DataBase data)
+        public static void SaveTheCake(DataBase data, string cakeName)
         {
-            string cakeName = DateTime.Now.ToString();
             string newAccesPath = @"MentettTortak\" + cakeName + ".csv";
 
             StreamWriter sw = new StreamWriter(newAccesPath, false, Encoding.Default);
