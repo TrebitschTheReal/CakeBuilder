@@ -6,6 +6,73 @@
         xmlns:local="clr-namespace:CakeBuilder"
         mc:Ignorable="d" FontSize="18" AllowsTransparency="true" WindowStyle="None" Padding="0" Background="Transparent"
         Title="Cake Builder 0.5" Height="500" Width="500" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="Transparent"/>
+        <Style x:Key="SaveAndExitButton" TargetType="{x:Type Button}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="MinHeight" Value="23"/>
+            <Setter Property="MinWidth" Value="75"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Border" CornerRadius="2" BorderThickness="1"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                            <ContentPresenter Margin="2" 
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" 
+                                 RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" 
+                          Property="Background" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" 
+                          Property="Background" Value="Transparent" />
+                                <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Border" 
+                          Property="Background" Value="Transparent" />
+                                <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Border Padding="15" CornerRadius="20"
             MouseMove="Header_MouseMove">
         <Border.Background>
@@ -29,20 +96,43 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <ComboBox x:Name="comboBox_ingridients"
-                      Grid.Column="4" Grid.Row="3"
-                      Background="Purple">
+                      Grid.Column="1"
+                      Grid.Row="2"
+                      Grid.ColumnSpan="4">
+                <ComboBox.Background>
+                    <ImageBrush ImageSource="E:/CakeBuilder/bin/backg/bcake.png"/>
+                </ComboBox.Background>
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-
-
             </ComboBox>
-
-
-
-
+            <TextBlock Text="Érték"
+                       FontSize="45"
+                       FontWeight="Bold"
+                       FontFamily="Freestyle Script"
+                       Margin="0,20"
+                       Grid.Column="1"
+                       Grid.Row="3"/>
+            <TextBox Background="LightPink"
+                     Margin="20,20"
+                     Grid.Column="2"
+                     Grid.Row="3"
+                     Width="60"
+                     FontSize="30"
+                     Padding="3"/>
+            <Button x:Name="button_SaveAndExit"
+                    Click="Button_Click_SaveAndExit"
+                    Margin="0,250,0,0"
+                    Grid.Column="4"
+                    Grid.Row="4"
+                    Content="Save and Exit"
+                    FontWeight="Black"
+                    FontFamily="Freestyle Script"
+                    FontSize="40"
+                    BorderThickness="0"
+                    Background="Transparent" Style="{DynamicResource SaveAndExitButton}"/>
         </Grid>
     </Border>
 </Window>

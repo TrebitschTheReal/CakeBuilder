@@ -33,5 +33,14 @@ namespace CakeBuilder
             if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
                 this.DragMove();
         }
+
+        private void Button_Click_SaveAndExit(object sender, RoutedEventArgs e)
+        {
+
+            if (MessageBox.Show("Your cake have been saved!", "", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
+            {
+                Environment.Exit(0);
+            }
+        }
     }
 }
