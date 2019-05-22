@@ -23,6 +23,8 @@ namespace CakeBuilder
         public MainWindow()
         {
             InitializeComponent();
+            DataBase data = new DataBase();
+            comboBox_ingridients.ItemsSource = data.Materials;
         }
 
 

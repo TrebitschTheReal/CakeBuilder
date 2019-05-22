@@ -28,6 +28,17 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
+            <ComboBox x:Name="comboBox_ingridients"
+                      Grid.Column="4" Grid.Row="3"
+                      Background="Purple">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+
+            </ComboBox>
 
 
 
