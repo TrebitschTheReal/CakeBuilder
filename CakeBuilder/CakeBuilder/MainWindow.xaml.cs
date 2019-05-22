@@ -37,21 +37,23 @@ namespace CakeBuilder
 
         private void Button_Click_SaveAndExit(object sender, RoutedEventArgs e)
         {
-            int chosenIngridient = comboBox_ingridients.SelectedIndex;
-            int typedValue = int.Parse(textbox_Value.Text);
-
-            data.Materials[chosenIngridient].UnitQuantity = typedValue;
-
-            comboBox_ingridients.Text = "";
-            textbox_Value.Text = "";
-
-            string cakeName = textbox_CakeName.Text;
-            Export.SaveTheCake(data, cakeName);
-
-            if (MessageBox.Show("A torta recept elmentve!", "", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
+            try
             {
+                int chosenIngridient = comboBox_ingridients.SelectedIndex;
+                int typedValue = int.Parse(textbox_Value.Text);
+
+                data.Materials[chosenIngridient].UnitQuantity = typedValue;
+
+                comboBox_ingridients.Text = "";
+                textbox_Value.Text = "";
+            }
+            catch
+            {
+                string cakeName = textbox_CakeName.Text;
+                Export.SaveTheCake(data, cakeName);
                 Environment.Exit(0);
             }
+           
         }
 
         private void Button_Click_AddIngridientValue(object sender, RoutedEventArgs e)

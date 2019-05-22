@@ -30,21 +30,30 @@ namespace CakeBuilder
 
         public static void SaveTheCake(DataBase data, string cakeName)
         {
-            string newAccesPath = @"MentettTortak\" + cakeName + ".csv";
-
-            StreamWriter sw = new StreamWriter(newAccesPath, false, Encoding.Default);
-
-            sw.WriteLine("Név;EgységTípus;Egységár;Mennyiség;Végösszeg");
-            for (int i = 0; i < data.Materials.Count; i++)
+            if (cakeName == "")
             {
-                sw.Write(data.Materials[i].Name + ";");
-                sw.Write(data.Materials[i].UnitType + ";");
-                sw.Write(data.Materials[i].UnitPrice + ";");
-                sw.Write(data.Materials[i].UnitQuantity + ";");
-                sw.Write(data.Materials[i].OverallPrice + ";");
-                sw.WriteLine();
+
             }
-            sw.Close();
+            else
+            {
+                string newAccesPath = @"MentettTortak\" + cakeName + ".csv";
+
+                StreamWriter sw = new StreamWriter(newAccesPath, false, Encoding.Default);
+
+                sw.WriteLine("Név;EgységTípus;Egységár;Mennyiség;Végösszeg");
+                for (int i = 0; i < data.Materials.Count; i++)
+                {
+                    sw.Write(data.Materials[i].Name + ";");
+                    sw.Write(data.Materials[i].UnitType + ";");
+                    sw.Write(data.Materials[i].UnitPrice + ";");
+                    sw.Write(data.Materials[i].UnitQuantity + ";");
+                    sw.Write(data.Materials[i].OverallPrice + ";");
+                    sw.WriteLine();
+                }
+                sw.Close();
+            }
+
+            
         }
     }
 }
