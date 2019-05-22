@@ -66,5 +66,16 @@ namespace CakeBuilder
             comboBox_ingridients.Text = "";
             textbox_Value.Text = "";
         }
+
+        private void GenerateActualIngridientData(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            try
+            {
+                int chosenIngridient = comboBox_ingridients.SelectedIndex;
+                textbox_ActualIngridientValue.Text = data.Materials[chosenIngridient].UnitQuantity.ToString();
+                textbox_ActualIngridientUnitType.Text = data.Materials[chosenIngridient].UnitType;
+            }
+            catch { }
+        }
     }
 }
